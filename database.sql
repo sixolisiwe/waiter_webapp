@@ -10,6 +10,6 @@ create table daysAvailable (
 	foreign key (waiter_id) references names(id)
 );
 
-insert into names (namesBooked) values('User 1');
-insert into names (namesBooked) values('User 2');
-insert into names (namesBooked) values('User 3');
+-- insert into names (namesBooked) values('User 1');
+-- insert into names (namesBooked) values('User 2');
+-- insert into names (namesBooked) values('User 3');
