@@ -1,6 +1,6 @@
 create table names(
 	id serial not null primary key,
-	namesBooked text not null    
+	namesBooked text    
 );
 
 create table daysAvailable (
