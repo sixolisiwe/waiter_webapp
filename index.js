@@ -48,7 +48,9 @@ app.use(bodyParser.json()); //config as per line13
 
 app.use(express.static('public'));
 
-app.get('/', myRoutes.enteredNumbers);
+app.get('/', (req,res) => {
+    res.render('index')
+});
 // app.post('/waiters/:username', myRoutes.add);
 // app.get('/days', myRoutes.filtersApp);
 
