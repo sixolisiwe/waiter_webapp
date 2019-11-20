@@ -2,7 +2,7 @@ module.exports = function daysAvailable(pool) {
 
 async function usersBooked(nameEntered){
     // let upperCase = numbers.toUpperCase(2);
-let enteredUser = await pool.query ('INSERT into names (namesBooked) values ($1)', [nameEntered]);
+let enteredUser = await pool.query ('INSERT into names (namesbooked) values ($1)', [nameEntered]);
 
    
     // let names_table = await pool.query('SELECT * FROM names');

@@ -1,6 +1,6 @@
 create table names(
 	id serial not null primary key,
-	namesBooked text    
+	namesbooked text    
 );
 
 create table daysAvailable (
@@ -10,6 +10,6 @@ create table daysAvailable (
 	foreign key (waiter_id) references names(id)
 );
 
--- insert into names (namesBooked) values('User 1');
+-- insert into names () values('User 1');
 -- insert into names (namesBooked) values('User 2');
 -- insert into names (namesBooked) values('User 3');
