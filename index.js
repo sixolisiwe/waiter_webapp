@@ -2,7 +2,7 @@ const express = require('express'); //importing express
 const bodyParser = require('body-parser'); //import bp
 const exphbs = require('express-handlebars'); //reference express-hbs after download
 
-const  bookingApp = require('./waiterDays');
+const bookingApp = require('./waiterDays');
 const routes = require('./route');
 const app = express(); //instance of app
 
@@ -48,11 +48,25 @@ app.use(bodyParser.json()); //config as per line13
 
 app.use(express.static('public'));
 
-app.get('/', (req,res) => {
+
+
+app.get('/waiters/:name', (req, res) => {
+    // var user = (req.body.name);
     res.render('index')
 });
-// app.post('/waiters/:username', myRoutes.add);
-// app.get('/days', myRoutes.filtersApp);
+
+app.post('/waiters/:name', (req, res) => {
+    var day = (req.body.weekday);// call dunction sends to server
+    
+res.redirect ('/waiters/:name')
+
+
+})
+
+app.get('/days', (req, res)=>{
+    res.render('admin.handlebars')
+    
+});
 
 const PORT = process.env.PORT || 5001; //config port to use default and define new port
 app.listen(PORT, function () {

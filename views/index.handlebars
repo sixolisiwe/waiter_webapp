@@ -7,36 +7,40 @@
     <title>Document</title>
 </head>
 <body>
+ 
     
-<form action="/waiter_App" method="get">
-<div class="container"> 
 <div class="a"> 
-<h1>  WAITERS AVAILABLE</h1>
+ WELCOME
+
 </div>
+
+{{!-- 
 <div class="d">
     <input type="text" name="textBox" id="">Please enter your username
-</div>
+</div> --}}
+
+
+
+
+<form action="/waiters/:name" method="post">
 <div class="b">
 <h3> Please select days available:</h3>
-<input type="checkbox" name="Day1 " id=""> Monday
-<input type="checkbox" name="Day2" id=""> Tuesday
-<input type="checkbox" name="Day3" id=""> Wednesday
-<input type="checkbox" name="Day4" id=""> Thursday
-<input type="checkbox" name="Day5" id=""> Friday
-<input type="checkbox" name="Day6" id=""> Saturday
-<input type="checkbox" name="Day7" id=""> Sunday
+<input type="checkbox" name= "weekday" value="Monday" id=""> Monday
+<input type="checkbox" name= "weekday" value="Tuesday" id=""> Tuesday
+<input type="checkbox" name= "weekday" value="Wednesday" id=""> Wednesday
+<input type="checkbox" name= "weekday" value="Thursday" id=""> Thursday
+<input type="checkbox" name= "weekday" value="Friday" id=""> Friday
+<input type="checkbox" name= "weekday" value="Saturday" id=""> Saturday
+<input type="checkbox" name= "weekday" value="Sunday" id=""> Sunday
  </div>
-
 <div class="c"> 
-<input type="submit" value=""> Book Me!
+<input type="submit" value="Book Me!"> 
 </div>
-</div>
+
+
 </form>
-{{!-- <form action="/send_days" method="post">
 
-</form> --}}
-
-<form action="/show_days" method="get">
+<form action="/days" method="get">
 
 
 
