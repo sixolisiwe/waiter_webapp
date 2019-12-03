@@ -14,7 +14,7 @@ const pg = require("pg");
 const Pool = pg.Pool;
 
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://codex:codex123@localhost';
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:codex123@localhost/waiterApp';
 
 
 const pool = new Pool({
@@ -48,38 +48,51 @@ app.use(bodyParser.json()); //config as per line13
 
 app.use(express.static('public'));
 
-app.get('/', (req, res)=>{
-res.render('login')
+app.get('/', (req, res) => {
+    res.render('login')
 })
 
-app.post('/', (req, res)=>{
-var user = req.body.textBox
-if (user === 'admin'){
-    res.redirect('/days')
+app.post('/', (req, res) => {
+    var user = req.body.textBox
+    if (user === 'admin') {
+        res.redirect('/days')
 
-}else{ 
-res.redirect('/waiters/'+ user)
-}
+    } else {
+        res.redirect('/waiters/' + user)
+    }
 })
 
 
-app.get('/waiters/:name', (req, res) => {
-     var user = req.params.name;
-    res.render('index', {user})
+app.get('/waiters/:name', async (req, res) => {
+  try {
+    var user = req.params.name;
+    let weekDay = await toBeBooked.getUserShifts(user);
+  
+         res.render('index', {
+            user,
+            day: weekDay
+        });
+    
+  } catch (error) {
+        console.log(e)
+  }
+
 });
 
-app.post('/waiters/:name', (req, res) => {
-    var day = req.body.weekday;// call dunction sends to server
+app.post('/waiters/:name', async (req, res) => {
+   try {
+    var days = req.body.weekday;
     var user = req.params.name;
-
-res.render('index', {user})
-
-
+    await toBeBooked.addShift(user, Array.isArray(days) ? days : [days]);
+       res.redirect('/waiters/' + user);
+   } catch (e) {
+       console.log(e);
+   }
 })
 
-app.get('/days', (req, res)=>{
+app.get('/days', (req, res) => {
     res.render('admin.handlebars')
-    
+
 });
 
 const PORT = process.env.PORT || 5001; //config port to use default and define new port

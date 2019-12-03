@@ -1,22 +1,27 @@
-create table names(
+create table waiter(
 	id serial not null primary key,
-	namesbooked text    
+	username text    
 );
 
-create table daysAvailable (
+create table weekdays(
 	id serial not null primary key,
-    waiter_id int,
-    dayOfWeek text,
-	foreign key (waiter_id) references names(id)
+    -- waiter_id int,
+    dayOfWeek text
+	-- foreign key (waiter_id) references names(id)
 );
 
-create table count(
+create table shift(
 	id serial not null primary key,
-	totalforEach int,
-	totalforDay int,
-	foreign key (totalforEach) references names(id),
-	foreign key (totalforDay) references daysAvailable(id)  
+	user_id int,
+	day_id int,
+	foreign key (user_id) references waiter(id),
+	foreign key (day_id) references weekdays(id)  
 );
--- insert into names () values('User 1');
--- insert into names (namesBooked) values('User 2');
--- insert into names (namesBooked) values('User 3');
+insert into weekdays (dayOfWeek) values('Monday');
+insert into weekdays (dayOfWeek) values('Tuesday');
+insert into weekdays (dayOfWeek) values('Wednesday');
+insert into weekdays (dayOfWeek) values('Thursday');
+insert into weekdays (dayOfWeek) values('Friday');
+insert into weekdays (dayOfWeek) values('Saturday');
+insert into weekdays (dayOfWeek) values('Sunday');
+

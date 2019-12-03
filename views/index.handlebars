@@ -21,13 +21,10 @@
 <div class="b">
 <h1>Hello, {{user}}</h1>
 <h3> Please select days below:</h3>
-<input type="checkbox" name= "weekday" value="Monday" id=""> Monday
-<input type="checkbox" name= "weekday" value="Tuesday" id=""> Tuesday
-<input type="checkbox" name= "weekday" value="Wednesday" id=""> Wednesday
-<input type="checkbox" name= "weekday" value="Thursday" id=""> Thursday
-<input type="checkbox" name= "weekday" value="Friday" id=""> Friday
-<input type="checkbox" name= "weekday" value="Saturday" id=""> Saturday
-<input type="checkbox" name= "weekday" value="Sunday" id=""> Sunday
+{{#each day}}
+<input type="checkbox" name= "weekday"  {{checked}} value="{{id}}" id="{{id}}"> {{dayofweek}}
+{{/each}}
+
  </div>
 <div class="c"> 
 <input type="submit" value="Book Me!"> 
