@@ -1,7 +1,7 @@
 module.exports = function daysAvailable(pool) {
     var returnUserName;
     var getDay;
-    var duplicate = "";
+ 
     async function usersBooked(nameEntered) {
 
         let enteredUser = await pool.query('INSERT into names (namesbooked) values ($1)', [nameEntered]);
