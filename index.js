@@ -48,17 +48,31 @@ app.use(bodyParser.json()); //config as per line13
 
 app.use(express.static('public'));
 
+app.get('/', (req, res)=>{
+res.render('login')
+})
+
+app.post('/', (req, res)=>{
+var user = req.body.textBox
+if (user === 'admin'){
+    res.redirect('/days')
+
+}else{ 
+res.redirect('/waiters/'+ user)
+}
+})
 
 
 app.get('/waiters/:name', (req, res) => {
-    // var user = (req.body.name);
-    res.render('index')
+     var user = req.params.name;
+    res.render('index', {user})
 });
 
 app.post('/waiters/:name', (req, res) => {
-    var day = (req.body.weekday);// call dunction sends to server
-    
-res.redirect ('/waiters/:name')
+    var day = req.body.weekday;// call dunction sends to server
+    var user = req.params.name;
+
+res.render('index', {user})
 
 
 })
